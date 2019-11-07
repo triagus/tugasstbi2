@@ -177,5 +177,21 @@ class Stbi extends CI_Controller {
         );
         $this->load->view('template/index', $data);
     }
+
+    public function truncate()
+    {
+        if ($this->input->post('password') == 123456) {
+            $this->db->truncate('dokumen');
+            $this->db->truncate('tbcache');
+            $this->db->truncate('tbvektor');
+            $this->db->truncate('upload');
+            $this->db->truncate('tbindex');
+        }
+
+        echo "<form method='POST'>
+            <input type='password' name='password'/>
+            <input type='submit' value='hapus'/>
+        </form>";
+    }
 }
 ?>
